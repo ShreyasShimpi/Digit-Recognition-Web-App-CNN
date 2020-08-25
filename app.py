@@ -41,9 +41,6 @@ def home():
 
             image = cv2.imread(file_path, 0)
             image = cv2.resize(image, (28, 28))
-            image = np.array(image, dtype=float)
-            image = (image / 255) - 0.5
-            image = image.reshape((-1, 784))
             prediction = model.predict(image)
             pred = np.argmax(prediction, axis=1)
             return render_template('next.html', data=pred)
